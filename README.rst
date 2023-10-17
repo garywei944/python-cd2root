@@ -1,7 +1,6 @@
-==============================
-cd2root: Working Directory to Project Root
-==============================
-
+=====================================================
+cd2root: Change Working Directory to the Project Root
+=====================================================
 
 .. image:: https://img.shields.io/pypi/v/cd2root.svg
         :target: https://pypi.python.org/pypi/cd2root
@@ -17,17 +16,18 @@ cd2root: Working Directory to Project Root
 ``cd2root`` allows you to elegantly change the working directory of the current file to the project root directory with only 1 line of code.
 It is useful when you have a project with a deep directory structure and you want to import modules relative to the project root directory.
 
+===============
 Getting Started
----------------
+===============
 
 Install cd2root
-~~~~~~~~~~~~~~~
+---------------
 .. code-block:: bash
 
     pip install cd2root
 
 Usage
-~~~~~
+-----
 The easiest way to use ``cd2root`` is to add the following line to the top of your python file:
 
 .. code-block:: python
@@ -54,8 +54,9 @@ If you just want to get the project root directory without changing the working 
     data_file = project_root / "data" / "data.csv"
     ...
 
+=============
 Documentation
--------------
+=============
 ``cd2root.cd2root`` is the grab-and-go function for most use cases.
 It has the following signature:
 

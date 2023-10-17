@@ -48,9 +48,9 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 lint/flake8: ## check style with flake8
-	flake8 cd2root tests
+	flake8 src/cd2root tests
 lint/black: ## check style with black
-	black --check cd2root tests
+	black --check src/cd2root tests
 
 lint: lint/flake8 lint/black ## check style
 
@@ -81,9 +81,8 @@ release: dist ## package and upload a release
 	twine upload dist/*
 
 dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
+	python -m build --sdist --wheel
 	ls -l dist
 
 install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+	python -m build
