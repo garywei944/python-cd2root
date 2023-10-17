@@ -9,12 +9,12 @@ requires = ["setuptools >= 62.6"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "projroot"
+name = "cd2root"
 description = "Change Working Directory to the Project Root"
 requires-python = ">=3.6"
 license = { text = "MIT license" }
 authors = [{ name = "garywei944", email = "garywei944@gmail.com" }]
-keywords = ["projroot"]
+keywords = ["cd2root"]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
@@ -30,14 +30,14 @@ dependencies = ["python-dotenv", "absl"]
 dynamic = ["version", "readme"]
 
 [project.urls]
-Homepage = "https://github.com/garywei944/projroot"
+Homepage = "https://github.com/garywei944/cd2root"
 # Documentation = "https://readthedocs.org"
-# Repository = "https://github.com/garywei944/projroot"
-Changelog = "https://github.com/garywei944/projroot/blob/main/HISTORY.rst"
-"Bug Tracker" = "https://github.com/garywei944/projroot/issues"
+# Repository = "https://github.com/garywei944/cd2root"
+Changelog = "https://github.com/garywei944/cd2root/blob/main/HISTORY.rst"
+"Bug Tracker" = "https://github.com/garywei944/cd2root/issues"
 
 [project.optional-dependencies]
 
 [tool.setuptools.dynamic]
-version = { attr = "projroot.__version__" }
+version = { attr = "cd2root.__version__" }
 readme = { file = ["README.rst", "HISTORY.rst"] }

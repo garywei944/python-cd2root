@@ -12,7 +12,7 @@ To install Working Directory Project Root, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install projroot
+    $ pip install cd2root
 
 This is the preferred method to install Working Directory Project Root, as it will always install the most recent stable release.
 
@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/garywei944/projroot
+    $ git clone git://github.com/garywei944/cd2root
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/garywei944/projroot/tarball/master
+    $ curl -OJL https://github.com/garywei944/cd2root/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/garywei944/projroot
-.. _tarball: https://github.com/garywei944/projroot/tarball/master
+.. _Github repo: https://github.com/garywei944/cd2root
+.. _tarball: https://github.com/garywei944/cd2root/tarball/master

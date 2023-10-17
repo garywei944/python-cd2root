@@ -26,5 +26,5 @@ deploy:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    repo: garywei944/projroot
+    repo: garywei944/cd2root
     python: 3.10

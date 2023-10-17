@@ -5,11 +5,12 @@ from absl import logging
 from dotenv import find_dotenv, load_dotenv as _load_dotenv
 
 
-def _cd_path(path: Path, verbose=True) -> Path:
+def cd2path(path: Path, verbose: bool = True) -> Path:
     """
     Change working directory to path.
 
     :param path: the path to change working directory to
+    :param verbose: whether to output verbose messages
     :return: path
     """
     if verbose:
@@ -21,7 +22,7 @@ def _cd_path(path: Path, verbose=True) -> Path:
     return path
 
 
-def cd_project_root(dotfile_name: str = None, load_dotenv: bool = True) -> Path:
+def cd2root(dotfile_name: str = None, load_dotenv: bool = True) -> Path:
     """
     Change working directory to project root directory.
 
@@ -40,13 +41,13 @@ def cd_project_root(dotfile_name: str = None, load_dotenv: bool = True) -> Path:
 
     if dotfile_name is not None:
         try:
-            return _cd_path(Path(find_dotenv(dotfile_name)))
+            return cd2path(Path(find_dotenv(dotfile_name)))
         except TypeError:
             logging.warning(f"{dotfile_name} is not found!")
 
     # If PROJECT_ROOT is set in .env, use it
     if os.getenv("PROJECT_ROOT") is not None:
-        return _cd_path(Path(os.getenv("PROJECT_ROOT")))
+        return cd2path(Path(os.getenv("PROJECT_ROOT")))
 
     for file_name in [
         ".idea",
@@ -58,6 +59,6 @@ def cd_project_root(dotfile_name: str = None, load_dotenv: bool = True) -> Path:
     ]:
         project_root = find_dotenv(file_name)
         if project_root != "":
-            return _cd_path(Path(project_root))
+            return cd2path(Path(project_root))
 
     return Path.cwd()

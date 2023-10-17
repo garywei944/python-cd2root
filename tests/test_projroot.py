@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 
-"""Tests for `projroot` package."""
+"""Tests for `cd2root` package."""
 
 
 import unittest
 from click.testing import CliRunner
 
-from projroot import projroot
-from projroot import cli
+from cd2root import main
+from cd2root import cli
 
 
 class TestProjroot(unittest.TestCase):
-    """Tests for `projroot` package."""
+    """Tests for `cd2root` package."""
 
     def setUp(self):
         """Set up test fixtures, if any."""
@@ -27,7 +27,7 @@ class TestProjroot(unittest.TestCase):
         runner = CliRunner()
         result = runner.invoke(cli.main)
         assert result.exit_code == 0
-        assert 'projroot.cli.main' in result.output
+        assert 'cd2root.cli.main' in result.output
         help_result = runner.invoke(cli.main, ['--help'])
         assert help_result.exit_code == 0
         assert '--help  Show this message and exit.' in help_result.output

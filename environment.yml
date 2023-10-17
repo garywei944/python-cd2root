@@ -3,7 +3,7 @@
 # or `conda env create -f environment.yml` to install the environment
 # Created and maintained by garywei944(garywei944@gmail.com)
 
-name: projroot
+name: cd2root
 channels:
   - conda-forge
   - anaconda

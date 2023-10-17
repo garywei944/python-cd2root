@@ -1,1 +1,1 @@
-"""Unit test package for projroot."""
+"""Unit test package for cd2root."""
