@@ -11,7 +11,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cd2root"
 description = "Change Working Directory to the Project Root"
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 license = { text = "MIT license" }
 authors = [{ name = "garywei944", email = "garywei944@gmail.com" }]
 keywords = ["cd2root", "Working Directory", "Project Root", "cd"]

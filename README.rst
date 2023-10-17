@@ -66,6 +66,7 @@ It has the following signature:
         path_name: str = None,
         dotfile_name: str = None,
         load_dotenv: bool = True,
+        use_cwd: bool = True,
         verbose: bool = False,
     ) -> Path:
         """
@@ -81,6 +82,7 @@ It has the following signature:
         :param path_name: the name of the path to find as the project root directory
         :param dotfile_name: the name of the dotfile to find as the project root directory
         :param load_dotenv: whether to load .env file
+        :param use_cwd: whether to use current working directory as the starting point
         :param verbose: whether to output verbose messages
         :return: project root directory
         """
@@ -90,10 +92,11 @@ It has the following signature:
 
 .. code-block:: python
 
-    def get_root_path(
+    def get_project_root(
         path_name: str = None,
         dotfile_name: str = None,
         load_dotenv: bool = True,
+        use_cwd: bool = True,
         verbose: bool = False,
     ) -> Path:
         """
@@ -119,13 +122,14 @@ There are also other helper functions available with ``cd2root``.
         """
         ...
 
-    def find_path(path_name: str) -> Path:
+    def find_path(path_name: str, use_cwd: bool = True) -> Path:
         """
         Find the path of the given path_name.
 
         raise FileNotFoundError if the path is not found.
 
         :param path_name: the name of the path to find
+        :param use_cwd: whether to use current working directory as the starting point
         :return: the path of the given path_name
         """
         ...
