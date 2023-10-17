@@ -14,9 +14,9 @@ description = "Change Working Directory to the Project Root"
 requires-python = ">=3.6"
 license = { text = "MIT license" }
 authors = [{ name = "garywei944", email = "garywei944@gmail.com" }]
-keywords = ["cd2root"]
+keywords = ["cd2root", "Working Directory", "Project Root", "cd"]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+#    "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
@@ -26,15 +26,15 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
-dependencies = ["python-dotenv", "absl"]
+dependencies = ["python-dotenv", "absl-py"]
 dynamic = ["version", "readme"]
 
 [project.urls]
-Homepage = "https://github.com/garywei944/cd2root"
+Homepage = "https://github.com/garywei944/python-cd2root"
 # Documentation = "https://readthedocs.org"
-# Repository = "https://github.com/garywei944/cd2root"
-Changelog = "https://github.com/garywei944/cd2root/blob/main/HISTORY.rst"
-"Bug Tracker" = "https://github.com/garywei944/cd2root/issues"
+# Repository = "https://github.com/garywei944/python-cd2root"
+Changelog = "https://github.com/garywei944/python-cd2root/blob/main/HISTORY.rst"
+"Bug Tracker" = "https://github.com/garywei944/python-cd2root/issues"
 
 [project.optional-dependencies]
 
