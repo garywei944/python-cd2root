@@ -44,9 +44,10 @@ The easiest way to use ``cd2root`` is to add the following line to the top of yo
     # Then import custom modules that are relative to the project root
     from src.utils import ...
 
-    ...
+If you just want to get the project root directory without changing the working directory
 
-    # If you just want to get the project root directory without changing the working directory
+.. code-block:: python
+
     from cd2root import get_project_root
 
     project_root = get_project_root()  # type: pathlib.Path
