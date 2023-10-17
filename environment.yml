@@ -1,0 +1,32 @@
+# Typical conda environment for a reproducible machine learning project
+# Use `mamba env create -f environment.yml`
+# or `conda env create -f environment.yml` to install the environment
+# Created and maintained by garywei944(garywei944@gmail.com)
+
+name: projroot
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - python
+  - pip
+
+  # PyPI common practice
+  - click
+  - setuptools_scm
+  - twine # for uploading to pypi
+  - blackd # black daemon, for python formatting
+  - mypy # for type checking
+  - bump2version # for version bump
+  - watchdog # filesystem event
+  - flake8 # linter
+  - tox
+  - coverage
+  - sphinx # doc
+
+  # If you need to install pip packages, don't do `pip install xxx`
+  # Add the package here and run `mamba env update -f environment.yml --prune`
+  # for dependency completeness.
+  - pip:
+      - build
