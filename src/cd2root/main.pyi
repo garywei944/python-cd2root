@@ -2,6 +2,7 @@ from pathlib import Path
 
 from typing import Union, Optional
 
+def _get_file_path(use_cwd: bool = True) -> Path: ...
 def find_path(path_name: str, use_cwd: bool = True) -> Path: ...
 def get_project_root(
     path_name: Optional[str] = None,
