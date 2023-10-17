@@ -66,7 +66,7 @@ It has the following signature:
         path_name: str = None,
         dotfile_name: str = None,
         load_dotenv: bool = True,
-        use_cwd: bool = True,
+        use_cwd: bool = False,
         verbose: bool = False,
     ) -> Path:
         """
@@ -96,7 +96,7 @@ It has the following signature:
         path_name: str = None,
         dotfile_name: str = None,
         load_dotenv: bool = True,
-        use_cwd: bool = True,
+        use_cwd: bool = False,
         verbose: bool = False,
     ) -> Path:
         """
@@ -122,7 +122,7 @@ There are also other helper functions available with ``cd2root``.
         """
         ...
 
-    def find_path(path_name: str, use_cwd: bool = True) -> Path:
+    def find_path(path_name: str, use_cwd: bool = False) -> Path:
         """
         Find the path of the given path_name.
 

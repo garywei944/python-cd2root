@@ -7,7 +7,7 @@ from dotenv import load_dotenv as _load_dotenv
 from typing import Union, Optional
 
 
-def _get_file_path(use_cwd: bool = True) -> Path:
+def _get_file_path(use_cwd: bool = False) -> Path:
     """
     Get the path of the file that calls this function.
 
@@ -38,7 +38,7 @@ def _get_file_path(use_cwd: bool = True) -> Path:
     return path
 
 
-def find_path(path_name: str, use_cwd: bool = True) -> Path:
+def find_path(path_name: str, use_cwd: bool = False) -> Path:
     """
     Find the path of the given path_name.
 
@@ -56,7 +56,7 @@ def find_path(path_name: str, use_cwd: bool = True) -> Path:
     return path
 
 
-def find_dotfile(dotfile_name: str, use_cwd: bool = True) -> Path:
+def find_dotfile(dotfile_name: str, use_cwd: bool = False) -> Path:
     """
     Find the path of the given dotfile_name.
 
@@ -78,7 +78,7 @@ def get_project_root(
     path_name: Optional[str] = None,
     dotfile_name: Optional[str] = None,
     load_dotenv: bool = True,
-    use_cwd: bool = True,
+    use_cwd: bool = False,
     verbose: bool = False,
 ) -> Path:
     """

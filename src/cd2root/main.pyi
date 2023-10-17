@@ -2,13 +2,13 @@ from pathlib import Path
 
 from typing import Union, Optional
 
-def _get_file_path(use_cwd: bool = True) -> Path: ...
-def find_path(path_name: str, use_cwd: bool = True) -> Path: ...
+def _get_file_path(use_cwd: bool = False) -> Path: ...
+def find_path(path_name: str, use_cwd: bool = False) -> Path: ...
 def get_project_root(
     path_name: Optional[str] = None,
     dotfile_name: Optional[str] = None,
     load_dotenv: bool = True,
-    use_cwd: bool = True,
+    use_cwd: bool = False,
     verbose: bool = False,
 ) -> Path: ...
 def cd2path(path: Union[Path, str], verbose: bool = False) -> Path: ...
@@ -16,7 +16,7 @@ def cd2root(
     path_name: Optional[str] = None,
     dotfile_name: Optional[str] = None,
     load_dotenv: bool = True,
-    use_cwd: bool = True,
+    use_cwd: bool = False,
     verbose: bool = False,
 ) -> Path:
     """
