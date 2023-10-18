@@ -2,12 +2,13 @@ import os
 import sys
 from pathlib import Path
 from absl import logging
+from click import Option
 from dotenv import load_dotenv as _load_dotenv
 
 from typing import Union, Optional
 
 
-def _get_file_path(use_cwd: bool = False) -> Path:
+def get_file_path(use_cwd: bool = False) -> Path:
     """
     Get the path of the file that calls this function.
 
@@ -38,17 +39,22 @@ def _get_file_path(use_cwd: bool = False) -> Path:
     return path
 
 
-def find_path(path_name: str, use_cwd: bool = False) -> Path:
+def find_path(
+    path_name: str, path: Optional[Path] = None, use_cwd: bool = False
+) -> Path:
     """
     Find the path of the given path_name.
 
     raise FileNotFoundError if the path is not found.
 
     :param path_name: the name of the path to find
-    :param use_cwd: whether to use current working directory as the starting point
+    :param path: the path to start searching from
+    :param use_cwd: whether to use current working directory as the starting point.
+    If path is not None, use_cwd is ignored.
     :return: the path of the given path_name
     """
-    path = _get_file_path(use_cwd=use_cwd)
+    if path is None:
+        path = get_file_path(use_cwd=use_cwd)
     while path.name != path_name and path != path.parent:
         path = path.parent
     if path.name != path_name:
@@ -56,17 +62,22 @@ def find_path(path_name: str, use_cwd: bool = False) -> Path:
     return path
 
 
-def find_dotfile(dotfile_name: str, use_cwd: bool = False) -> Path:
+def find_dotfile(
+    dotfile_name: str, path: Optional[Path] = None, use_cwd: bool = False
+) -> Path:
     """
     Find the path of the given dotfile_name.
 
     raise FileNotFoundError if the dotfile is not found.
 
     :param dotfile_name: the name of the dotfile to find
-    :param use_cwd: whether to use current working directory as the starting point
+    :param path: the path to start searching from
+    :param use_cwd: whether to use current working directory as the starting point.
+    If path is not None, use_cwd is ignored.
     :return: the path of the folder of the given dotfile_name
     """
-    path = _get_file_path(use_cwd=use_cwd)
+    if path is None:
+        path = get_file_path(use_cwd=use_cwd)
     while not path.joinpath(dotfile_name).is_file() and path != path.parent:
         path = path.parent
     if not path.joinpath(dotfile_name).is_file():
@@ -78,6 +89,7 @@ def get_project_root(
     path_name: Optional[str] = None,
     dotfile_name: Optional[str] = None,
     load_dotenv: bool = True,
+    path: Optional[Path] = None,
     use_cwd: bool = False,
     verbose: bool = False,
 ) -> Path:
@@ -95,22 +107,27 @@ def get_project_root(
     :param path_name: the name of the path to find as the project root directory
     :param dotfile_name: the name of the dotfile to find as the project root directory
     :param load_dotenv: whether to load .env file
-    :param use_cwd: whether to use current working directory as the starting point
+    :param path: the path to start searching from
+    :param use_cwd: whether to use current working directory as the starting point.
+    If path is not None, use_cwd is ignored.
     :param verbose: whether to output verbose messages
     :return: project root directory
     """
     if load_dotenv:
         _load_dotenv()
 
+    if path is None:
+        path = get_file_path(use_cwd=use_cwd)
+
     if path_name is not None:
         try:
-            return find_path(path_name, use_cwd=use_cwd)
+            return find_path(path_name, path=path)
         except FileNotFoundError as err:
             logging.warning(err)
 
     if dotfile_name is not None:
         try:
-            return find_dotfile(dotfile_name, use_cwd=use_cwd)
+            return find_dotfile(dotfile_name, path=path)
         except FileNotFoundError as err:
             logging.warning(err)
 
@@ -127,14 +144,14 @@ def get_project_root(
         "LICENSE",
     ]:
         try:
-            project_root = find_dotfile(file_name, use_cwd=use_cwd)
+            project_root = find_dotfile(file_name, path=path)
 
             if verbose:
                 print(f"Found {file_name} at {project_root}")
 
             return project_root
         except FileNotFoundError as err:
-            logging.warning(err)
+            logging.info(err)
 
     raise FileNotFoundError("Project root directory is not found!")
 
@@ -150,6 +167,8 @@ def cd2path(path: Union[Path, str], verbose: bool = False) -> Path:
     if verbose:
         print(f"Changed working directory to {path}")
 
+    path = Path(path).resolve().absolute()
+
     os.chdir(path)
     sys.path.insert(0, str(path))
 
@@ -160,6 +179,12 @@ def cd2root(verbose: bool = False, *args, **kwargs) -> Path:
     """
     Change working directory to project root directory.
 
+    :param path_name: the name of the path to find as the project root directory
+    :param dotfile_name: the name of the dotfile to find as the project root directory
+    :param load_dotenv: whether to load .env file
+    :param path: the path to start searching from
+    :param use_cwd: whether to use current working directory as the starting point
+    :param verbose: whether to output verbose messages
     :return: project root directory
     """
     try:

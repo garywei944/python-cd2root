@@ -2,12 +2,15 @@ from pathlib import Path
 
 from typing import Union, Optional
 
-def _get_file_path(use_cwd: bool = False) -> Path: ...
-def find_path(path_name: str, use_cwd: bool = False) -> Path: ...
+def get_file_path(use_cwd: bool = False) -> Path: ...
+def find_path(
+    path_name: str, path: Optional[Path] = None, use_cwd: bool = False
+) -> Path: ...
 def get_project_root(
     path_name: Optional[str] = None,
     dotfile_name: Optional[str] = None,
     load_dotenv: bool = True,
+    path: Optional[Path] = None,
     use_cwd: bool = False,
     verbose: bool = False,
 ) -> Path: ...
@@ -16,6 +19,7 @@ def cd2root(
     path_name: Optional[str] = None,
     dotfile_name: Optional[str] = None,
     load_dotenv: bool = True,
+    path: Optional[Path] = None,
     use_cwd: bool = False,
     verbose: bool = False,
 ) -> Path:
@@ -32,6 +36,7 @@ def cd2root(
     :param path_name: the name of the path to find as the project root directory
     :param dotfile_name: the name of the dotfile to find as the project root directory
     :param load_dotenv: whether to load .env file
+    :param path: the path to start searching from
     :param use_cwd: whether to use current working directory as the starting point
     :param verbose: whether to output verbose messages
     :return: project root directory
