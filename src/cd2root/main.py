@@ -2,7 +2,6 @@ import os
 import sys
 from pathlib import Path
 from absl import logging
-from click import Option
 from dotenv import load_dotenv as _load_dotenv
 
 from typing import Union, Optional

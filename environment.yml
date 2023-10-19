@@ -12,6 +12,9 @@ dependencies:
   - python
   - pip
 
+  - absl-py
+  - python-dotenv
+
   # PyPI common practice
   - click
   - setuptools_scm
